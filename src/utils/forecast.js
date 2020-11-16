@@ -16,6 +16,7 @@ const forecast = (lat, long, callback) => {
     } else if (body.error) {
       callback("Unable to find location.");
     } else {
+      console.log(body.current);
       callback(
         undefined,
         body.current.weather_descriptions[0] +
@@ -23,7 +24,9 @@ const forecast = (lat, long, callback) => {
           body.current.temperature +
           " farenheit, but it feels like " +
           body.current.feelslike +
-          " farenheit."
+          " farenheit. Humidity is " +
+          body.current.humidity +
+          "%."
       );
     }
   });
